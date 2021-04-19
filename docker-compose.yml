@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+
+  tracker:
+    build: ./tracker
+    expose:
+      - 80
+    ports:
+      - "80:80"
+    networks: 
+      bittorrent_net:
+        ipv4_address: 127.0.0.2
+    command: bittorrent-tracker -p 80
+  
+  peer_1:
+    build: ./transmission
+    image: transmission
+    expose:
+      - 9091
+      - 51413
+    networks:
+      bittorrent_net:
+        ipv4_address: 127.0.0.3
+    command: bash -c "cp networking_03.png ./downloads && transmission-cli test.torrent -w ./downloads"
+  
+  peer_2:
+    image: transmission
+    expose:
+      - 9091
+      - 51413
+    networks:
+      bittorrent_net:
+        ipv4_address: 127.0.0.4
+    command: bash -c "transmission-cli test.torrent -w ./downloads"
+
+networks:
+  bittorrent_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 127.0.0.0/8
