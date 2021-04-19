@@ -4,15 +4,25 @@ Network setup for testing BitTorrent peers.
 
 ## Setup and Run
 
+Start containers with:
+
     docker-compose up --build
 
-To check a peer:
+Interface with a peer with:
 
     docker exec -it <CONTAINER ID> bash
 
+Containers need to be brought down to reset files:
+
+    docker-compose down
+
 ## Network Configuration
 
-Sample setup is comprised of:
+The default setup consists of a tracker and 2 peers where
+1 peer starts by seeding a torrent for an image to the
+other peer.
+
+The network is comprised of:
   - `tracker`: Tracker web server
   - `peer_1`: Peer using Transmission client starting with full file/directory
   - `peer_2`: Peer using Transmission client that does not start full file/directory
