@@ -39,3 +39,6 @@ in `docker-compose.yml`.
   - Create and save torrent as `test.torrent`
 
 - Copy `test.torrent` and target file/directory to `transmission`
+
+- Change `cp networking_03.png ./downloads` to `cp -r <TARGET FILE/DIRECTORY> ./downloads` in `docker-compose.yml`
+for peers with the initial target file/directory.
