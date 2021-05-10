@@ -24,3 +24,11 @@ services:
       - 9091
       - 51413
     command: bash -c "transmission-cli test.torrent -w ./downloads"
+  
+  # Uncomment below to add custom client
+
+  # peer_3:
+  #  build: ./custom_client
+  #  expose:
+  #    - 6881
+  #  command: client ...

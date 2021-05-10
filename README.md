@@ -42,3 +42,15 @@ in `docker-compose.yml`.
 
 - Change `cp networking_03.png ./downloads` to `cp -r <TARGET FILE/DIRECTORY> ./downloads` in `docker-compose.yml`
 for peers with the initial target file/directory.
+
+## Adding Other Clients
+
+Custom BitTorrent client implementations can be added to the network by adding a folder containing the new client's code and a `Dockerfile`
+specifying how to build the image for the client. `docker-compose.yml` can then be updated to include the new folder
+as well as a run command for the client. `custom_client` contains a skeleton for adding new clients.
+
+When adding a new client, make sure:
+
+- Executables have execution permission before building in Docker Compose
+- Your client has a copy of the `.torrent` you are working with
+- `docker-compose.yml` is configured to expose the port your client is advertising itself on
