@@ -35,7 +35,7 @@ in `docker-compose.yml`.
 - Generate a new torrent in BitTorrent
   - Create a new torrent under `File->Create New Torrent`
   - Add target file/directory
-  - Set trackers to `udp://tracker/announce` (This can also be changed to an external tracker if desired.)
+  - Set trackers to `http://tracker/announce` (This can also be changed to an external tracker if desired.)
   - Create and save torrent as `test.torrent`
 
 - Copy `test.torrent` and target file/directory to `transmission`
